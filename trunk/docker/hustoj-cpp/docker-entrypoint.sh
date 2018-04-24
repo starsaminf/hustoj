@@ -1,29 +1,5 @@
 #!/bin/bash
 
-DIRECTORY="/data/data/"
-if [ ! -d $DIRECTORY ]; then
-	mv  /home/judge/data/ /data/
-else
-	rm -R /home/judge/data/
-fi
-ln -s $DIRECTORY /home/judge/data
-	
-DIRECTORY="/data/judge.conf"
-if [ ! -f $DIRECTORY ]; then
-	mv /home/judge/etc/judge.conf /data/
-else
-	rm /home/judge/etc/judge.conf
-fi
-ln -s $DIRECTORY /home/judge/etc/judge.conf
-
-DIRECTORY="/data/db_info.inc.php"
-if [ ! -f $DIRECTORY ]; then
-	mv /home/judge/src/web/include/db_info.inc.php /data/
-else
-	rm /home/judge/src/web/include/db_info.inc.php
-fi
-ln -s $DIRECTORY /home/judge/src/web/include/db_info.inc.php
-
 DIRECTORY="/data/mysql"
 if [ ! -d $DIRECTORY ]; then
 	mv  /var/lib/mysql /data

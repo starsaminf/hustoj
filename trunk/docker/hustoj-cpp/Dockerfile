@@ -24,7 +24,7 @@ RUN set -ex \
 	&& apt-get install -y mysql-server \
 # code
 	&& /usr/sbin/useradd -m -u 1536 judge \
-	&& cd / && git clone https://github.com/zhblue/hustoj.git \	
+	&& cd / && git clone https://github.com/zhblue/hustoj.git \
 	&& mv /hustoj/trunk /home/judge/src \
 # clear
 	&& rm -R /hustoj \
@@ -33,7 +33,7 @@ RUN set -ex \
 #
 	&& USER=`cat /etc/mysql/debian.cnf |grep user|head -1|awk  '{print $3}'` \
 	&& PASSWORD=`cat /etc/mysql/debian.cnf |grep password|head -1|awk  '{print $3}'` \
-	&& CPU=`grep "cpu cores" /proc/cpuinfo |head -1|awk '{print $4}'`   \	
+	&& CPU=`grep "cpu cores" /proc/cpuinfo |head -1|awk '{print $4}'`   \
 	&& cd /home/judge/                  \
 	&& mkdir etc data log   \
 	&& cp src/install/java0.policy  /home/judge/etc   \
@@ -71,10 +71,10 @@ RUN set -ex \
 	&& ln -s /usr/local/bin/docker-entrypoint.sh  /docker-entrypoint.sh
 
 COPY nginx/default.conf /etc/nginx/sites-available/default
-	
+
 WORKDIR /home/judge/
 EXPOSE 80
-VOLUME ["/data"]
+VOLUME ["/home/judge/data"]
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 #CMD judged /home/judge debug && tail -f /dev/null
