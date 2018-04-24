@@ -1,6 +1,5 @@
 #!/bin/bash
-
-DIRECTORY="/data/mysql"
+DIRECTORY="/home/judge/data/mysql"
 if [ ! -d $DIRECTORY ]; then
 	mv  /var/lib/mysql /data
 else
