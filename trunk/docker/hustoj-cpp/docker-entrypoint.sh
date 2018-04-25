@@ -9,6 +9,15 @@ ln -s $DIRECTORY /var/lib/mysql
 
 chown -R mysql:mysql /home/judge/mysql
 
+cd /home/judge/src/core/judged
+make
+chmod +x judged
+cp judged /usr/bin
+cd ../judge_client
+make
+chmod +x judge_client
+cp judge_client /usr/bin
+
 service mysql start
 /usr/bin/judged
 php5-fpm
