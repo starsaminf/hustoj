@@ -24,8 +24,8 @@ RUN set -ex \
 	&& chown -R mysql:mysql /var/lib/mysql  \
 	&& service mysql restart \
 	&& service mysql status \
-	&& $USER > /home/judge/password.txt \
-	&& $PASSWORD >> /home/judge/password.txt \
+	&& echo $USER > /home/judge/password.txt \
+	&& echo $PASSWORD >> /home/judge/password.txt \
 	#&& mysql -h localhost -u$USER -p$PASSWORD< /home/judge/src/install/db.sql \
 	#&& echo "insert into jol.privilege values('admin','administrator','N');"|mysql -h localhost -u$USER -p$PASSWORD \
 	#&& service mysql stop \
